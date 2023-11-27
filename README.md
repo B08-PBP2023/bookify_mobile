@@ -35,7 +35,7 @@ Pada halaman `homepage`, pengguna dapat melihat informasi mengenai website. Sela
 - About website
 
 ### 2. **Profil user** (Aulia Rizqi)
-Pada halaman `profil user`, terdapat data-data mengenai pengguna dan role (Reguler atau Spesial) serta dapat menambahkan buku favorit.
+Pada halaman `profil user`, terdapat data-data mengenai pengguna dan role (Reguler) serta dapat menambahkan buku favorit.
 - Ubah Profil (tanggal lahir dan deskripsi)
 - Menambahkan buku favorit
 
