@@ -40,27 +40,27 @@ Pada halaman `profil user`, terdapat data-data mengenai pengguna dan role (Regul
 - Menambahkan buku favorit
 
 ### 3. **Halaman pinjam buku** (Sita Amira)
-Pada halaman `pinjam buku`, user Reguler dan Spesial dapat melakukan peminjaman buku.
+Pada halaman `pinjam buku`, user Reguler dapat melakukan peminjaman buku.
 - Filter berdasarkan tahun terbit, judul, bahasa buku
 - Meminjam buku
 
 ### 4. **Halaman baca dan wishlist** (Zaki Baihaqi)
-Pada halaman `baca dan wishlist`, user Reguler dan Spesial dapat melihat daftar buku wishlist dan menambahkan.
+Pada halaman `baca dan wishlist`, user Reguler dapat melihat daftar buku wishlist dan menambahkan.
 - Melihat wishlist
 
 ### 5. **Halaman request buku** (Darrel Jeremiah)
-Pada halaman `request buku`, user Reguler dan Spesial dapat merequest buku yang belum tersedia di perpustakaan.
+Pada halaman `request buku`, user Reguler dapat merequest buku yang belum tersedia di perpustakaan.
 - Request buku yang belum tersedia di perpustakaan
 
 ### 6. **Halaman ulasan buku** (Eryanda Arian)
-Pada halaman `ulasan buku`, user Reguler dan Spesial dapat memberikan ulasan buku yang sudah pernah dipinjam.
+Pada halaman `ulasan buku`, user Reguler dapat memberikan ulasan buku yang sudah pernah dipinjam.
 - Ulasan buku
 
 ### 7. **FAQ** (Alif Bintang)
 Halaman `FAQ` ini berisi daftar pertanyaan beserta jawaban untuk masing-masing buku. 
-- Sebagai user Reguler/Spesial, user dapat mengirimkan pertanyaan untuk suatu buku melalui form yang tersedia (tetapi belum akan ditampilkan sampai Admin menjawab). 
+- Sebagai user Reguler, user dapat mengirimkan pertanyaan untuk suatu buku melalui form yang tersedia (tetapi belum akan ditampilkan sampai Admin menjawab). 
 - Admin dapat melihat kumpulan pertanyaan untuk suatu buku, kemudian dapat memilih pertanyaan mana yang akan dijawab/dihapus. Ketika pertanyaan sudah dijawab, pertanyaan dan jawaban tersebut akan ditampilkan. 
-- Baik Admin dan User Reguler/Spesial dapat melihat apa saja pertanyaan dan jawaban untuk setiap buku, tapi jika pertanyaannya belum dijawab, hanya Admin yang dapat melihat kumpulan pertanyaan yang dikirim oleh User Non-Admin tersebut.
+- Baik Admin dan User Reguler dapat melihat apa saja pertanyaan dan jawaban untuk setiap buku, tapi jika pertanyaannya belum dijawab, hanya Admin yang dapat melihat kumpulan pertanyaan yang dikirim oleh User Non-Admin tersebut.
 
 ## Alur Integrasi
 Website yang telah terlebih dahulu dideploy disusun memiliki backend yang dapat menampilkan JSON data-data terkait
