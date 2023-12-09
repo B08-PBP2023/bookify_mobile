@@ -98,4 +98,4 @@ class EnumValues<T> {
         reverseMap = map.map((k, v) => MapEntry(v, k));
         return reverseMap;
     }
-
+}
