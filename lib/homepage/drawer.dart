@@ -44,7 +44,7 @@ Drawer buildDrawer(BuildContext context) {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilPage()),
+                MaterialPageRoute(builder: (context) => const ProfilPage()),
               );
             },
           ),
