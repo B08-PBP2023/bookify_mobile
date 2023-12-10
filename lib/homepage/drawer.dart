@@ -1,3 +1,4 @@
+import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/screen/list_buku.dart';
 import 'package:bookify_mobile/homepage/homepage.dart';
@@ -82,6 +83,18 @@ Drawer buildDrawer(BuildContext context) {
                     );
                   },
                 ),
+
+                ListTile(
+                  title: const Text('Ulasan', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.reviews, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DaftarUlasan()),
+                    );
+                  },
+                ),
+
               ],
             ),
           ), // <-- This is the closing parenthesis for Padding
