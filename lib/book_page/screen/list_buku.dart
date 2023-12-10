@@ -17,7 +17,7 @@ class _DaftarBukuState extends State<DaftarBuku> {
     return Scaffold(
         // backgroundColor: Colors.green[100],
         appBar: AppBar(
-          title: Text("Daftar Buku"),
+          title: Text("Daftar Buku",),
         ),
         // menambahkan Drawer untuk navigasi antarhalaman
         drawer: buildDrawer(context),
@@ -26,7 +26,7 @@ class _DaftarBukuState extends State<DaftarBuku> {
               gradient: LinearGradient(
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
-                  colors: [Colors.greenAccent, Colors.blueGrey])),
+                  colors: [Colors.blueAccent, Colors.blueGrey])),
           child: FutureBuilder(
               future: fetchBook(),
               builder: (context, AsyncSnapshot snapshot) {

@@ -30,7 +30,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Colors.greenAccent, Colors.blueGrey],
+            colors: [Colors.blueAccent, Colors.blueGrey],
           ),
         ),
         child: FutureBuilder(
