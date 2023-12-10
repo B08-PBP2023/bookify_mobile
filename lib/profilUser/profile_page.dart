@@ -3,20 +3,49 @@ import 'edit_profile.dart';
 import 'package:bookify_mobile/homepage/drawer.dart';
 import 'listbuku_favorit.dart';
 import 'package:bookify_mobile/book_page/models/buku.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:bookify_mobile/authentication/login.dart';
 
 class ProfilPage extends StatefulWidget {
-  const ProfilPage({Key? key});
+    final String username;
+  const ProfilPage({Key? key, required this.username}) : super(key: key);
 
   @override
-  _ProfilPageState createState() => _ProfilPageState();
+  _ProfilPageState createState() => _ProfilPageState(username: username);
 }
 
 class _ProfilPageState extends State<ProfilPage> {
   // Data profil
-  String nama = "Cilor Maklor";
+  late String nama;
   String role = "Reguler";
   String tanggalLahir = "01 Januari 1990";
   String description = "cilor maklor adalah kucing kembar";
+
+  Future<void> _loadProfileData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      tanggalLahir = prefs.getString('tanggal_lahir') ?? "01 Januari 1990";
+      description = prefs.getString('deskripsi') ?? "Deskripsi default";
+    });
+  }
+
+   Future<void> _logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear(); // Membersihkan semua data
+
+    // Logika logout lainnya (misalnya, navigasi ke layar login)
+    // Misalnya, Anda bisa menggunakan Navigator untuk pindah ke layar login
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()), // Gantilah dengan nama kelas layar login Anda
+    );
+  }
+
+ // Receive the username from the widget constructor
+  _ProfilPageState({required String username}) {
+    // Initialize nama with the provided username
+    nama = username;
+  }
 
   List<Fields> favoriteBooks = [];
 
@@ -54,13 +83,13 @@ class _ProfilPageState extends State<ProfilPage> {
                       DataColumn(
                         label: Text(
                           'Attribute',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ),
                       DataColumn(
                         label: Text(
                           'Value',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ),
                     ],
@@ -155,7 +184,6 @@ class _ProfilPageState extends State<ProfilPage> {
                                   Text("Penerbit: ${book.publisher}"),
                                 ],
                               ),
-                              // ... (tambahkan detail lain jika diperlukan)
                             ),
                           );
                         },

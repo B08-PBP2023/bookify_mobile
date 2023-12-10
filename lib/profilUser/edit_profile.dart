@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfilPage extends StatefulWidget {
   final String initialTanggalLahir;
@@ -10,7 +11,7 @@ class EditProfilPage extends StatefulWidget {
     required this.initialTanggalLahir,
     required this.initialDescription,
     required this.onUpdate,
-  });
+  }) : super(key: key);
 
   @override
   _EditProfilPageState createState() => _EditProfilPageState();
@@ -29,6 +30,16 @@ class _EditProfilPageState extends State<EditProfilPage> {
         TextEditingController(text: widget.initialDescription);
   }
 
+  // Fungsi untuk menyimpan data menggunakan shared_preferences
+  Future<void> _simpanData() async {
+    print('Tanggal Lahir: ${tanggalLahirController.text}');
+print('Deskripsi: ${descriptionController.text}');
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('tanggal_lahir', tanggalLahirController.text);
+  await prefs.setString('deskripsi', descriptionController.text);
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +51,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
         child: Container(
           padding: EdgeInsets.all(16.0),
           decoration: BoxDecoration(
-            color: Colors.blue[200], // Ganti warna background dengan biru pastel
+            color: Colors.blue[200],
             borderRadius: BorderRadius.circular(10.0),
           ),
           child: Column(
@@ -76,18 +87,17 @@ class _EditProfilPageState extends State<EditProfilPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  // Panggil callback onUpdate untuk mengupdate data profil
-                  widget.onUpdate(
-                    tanggalLahirController.text,
-                    descriptionController.text,
-                  );
+  onPressed: () async {
+    await _simpanData();  // Pastikan fungsi ini dipanggil
+    widget.onUpdate(
+      tanggalLahirController.text,
+      descriptionController.text,
+    );
+    Navigator.pop(context);
+  },
+  child: Text('Simpan'),
+),
 
-                  // Kembali ke halaman profil setelah update
-                  Navigator.pop(context);
-                },
-                child: Text('Simpan'),
-              ),
             ],
           ),
         ),
