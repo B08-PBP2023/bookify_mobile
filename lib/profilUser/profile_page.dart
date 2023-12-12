@@ -18,8 +18,8 @@ class _ProfilPageState extends State<ProfilPage> {
   // Data profil
   late String nama;
   String role = "Reguler";
-  String tanggalLahir = "01 Januari 1990";
-  String description = "cilor maklor adalah kucing kembar";
+  String tanggalLahir = " ";
+  String description = " ";
 
   Future<void> _loadProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
