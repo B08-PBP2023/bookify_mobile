@@ -8,7 +8,7 @@ import 'package:bookify_mobile/faq/models/question.dart';
 Future<List<QuestionAnswer>> fetchQuestionAnswer(int idbuku) async {
   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
   var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/FAQ/get_questions_answers_filtered_json/$idbuku/');
-  // var url = Uri.parse('http://localhost:8000/get-items/');
+  // var url = Uri.parse('http://127.0.0.1:8000/FAQ/get_questions_answers_filtered_json/$idbuku/');
   var response = await http.get(
     url,
     // "Access-Control-Allow-Origin": "*",

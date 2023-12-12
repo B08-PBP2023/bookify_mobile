@@ -4,10 +4,12 @@ import 'dart:convert';
 
 import 'package:bookify_mobile/faq/models/question.dart';
 
-Future<List<Question>> fetchQuestion() async {
+Future<List<Question>> fetchQuestion(int idBuku) async {
   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/FAQ/get_questions_json/');
-  // var url = Uri.parse('http://localhost:8000/get-items/');
+  
+  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/FAQ/get_questions_filtered_json/$idBuku/');
+  // var url = Uri.parse('http://127.0.0.1:8000/FAQ/get_questions_filtered_json/$idBuku/');
+
   var response = await http.get(
     url,
     // "Access-Control-Allow-Origin": "*",
