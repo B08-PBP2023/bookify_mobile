@@ -1,15 +1,17 @@
+import 'package:bookify_mobile/faq/screen/question_with_answer.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/utils/fetch_buku.dart';
 import 'package:bookify_mobile/homepage/drawer.dart';
 
-class DaftarBuku extends StatefulWidget {
-  const DaftarBuku({super.key});
+class DaftarBukuFAQ extends StatefulWidget {
+  const DaftarBukuFAQ({super.key,required this.username});
+  final String username;
 
   @override
-  State<DaftarBuku> createState() => _DaftarBukuState();
+  State<DaftarBukuFAQ> createState() => _DaftarBukuFAQState();
 }
 
-class _DaftarBukuState extends State<DaftarBuku> {
+class _DaftarBukuFAQState extends State<DaftarBukuFAQ> {
   bool value = false;
 
   @override
@@ -116,13 +118,11 @@ class _DaftarBukuState extends State<DaftarBuku> {
                               ),
                             ),
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => SingleDestination(
-                              //             data: snapshot.data![index],
-                              //           )),
-                              // );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FAQBuku(idBuku: snapshot.data![index].pk,)),
+                              );
                             }));
                   }
                 }

@@ -12,10 +12,12 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("LiteraKarya"),
+        title: Text("BOOKIFY", style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: Icon(Icons.exit_to_app, color: Colors.white),
             onPressed: () {
               Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => LoginPage()),
@@ -23,6 +25,7 @@ class MyHomePage extends StatelessWidget {
             },
           ),
         ],
+        iconTheme: IconThemeData(color: Colors.white), 
       ),
       drawer: buildDrawer(context),
       body: Center(
@@ -31,30 +34,30 @@ class MyHomePage extends StatelessWidget {
                 gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [Colors.greenAccent, Colors.blueGrey]),
+                    colors: [Colors.blueAccent, Colors.blueGrey]),
                 borderRadius: BorderRadius.circular(0),
                 boxShadow: const [
                   BoxShadow(color: Colors.black, blurRadius: 2.0)
                 ]),
             child: Column(
               children: [
-                SizedBox(height: 30),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(35)),
-                  child: Container(
-                      padding: EdgeInsets.all(5),
-                      // decoration: BoxDecoration(
-                      // padding: const EdgeInsets.all(10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: Image.network(
-                          "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1489732961i/1362193.jpg",
-                          height: 240,
-                        ),
-                      )),
-                ),
+                // SizedBox(height: 30),
+                // Container(
+                //   decoration: BoxDecoration(
+                //       color: Colors.white,
+                //       borderRadius: BorderRadius.circular(35)),
+                //   child: Container(
+                //       padding: EdgeInsets.all(5),
+                //       // decoration: BoxDecoration(
+                //       // padding: const EdgeInsets.all(10),
+                //       child: ClipRRect(
+                //         borderRadius: BorderRadius.circular(30.0),
+                //         child: Image.network(
+                //           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1489732961i/1362193.jpg",
+                //           height: 240,
+                //         ),
+                //       )),
+                // ),
                 SizedBox(height: 10),
                 Column(
                   children: [
@@ -66,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
                       child: Text(
-                        "LiteraKarya adalah platform baca buku online yang memadukan kemudahan akses ke berbagai buku digital dengan elemen-elemen gamifikasi untuk meningkatkan semangat membaca. Dalam upaya memperluas wawasan literasi, LiteraKarya menawarkan berbagai informasi tentang buku, termasuk karya-karya dari penulis Indonesia dan luar negeri.",
+                        "Bookify adalah sebuah aplikasi perpustakaan online yang dirancang untuk membantu pengguna dalam mengeksplorasi, meminjam, dan membaca buku secara digital. Dengan menyediakan akses yang lebih mudah dan cepat ke berbagai sumber literatur, Bookify membantu memfasilitasi dan mendorong kegiatan membaca di seluruh dunia. Melalui inovasi ini, Bookify hadir berperan dalam meningkatkan aksesbilitas literatur dan memajukan budaya literasi di era digital.",
                       ),
                     ),
                   ],
@@ -82,7 +85,7 @@ class MyHomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(children: [
                         Text(
-                          "Literakarya adalah website list buku yang bagus dan menarik!",
+                          "Lihat Semua Buku",
                         ),
                         SizedBox(height: 10),
                         TextButton(
