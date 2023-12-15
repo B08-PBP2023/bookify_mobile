@@ -4,9 +4,14 @@ import 'dart:convert';
 
 import 'package:bookify_mobile/book_page/models/buku.dart';
 
-Future<List<Buku>> fetchBook() async {
+Future<List<Buku>> fetchBook(String judul) async {
   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/pinjamBuku/get_books/');
+  var url;
+  if(judul == "") {
+    url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/pinjamBuku/get_books/');
+  } else {
+    url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/pinjamBuku/get_books_by_judul/$judul/');
+  }
   // var url = Uri.parse('http://127.0.0.1:8000/pinjamBuku/get_books/');
 
   var response = await http.get(

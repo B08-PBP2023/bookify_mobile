@@ -13,6 +13,7 @@ class DaftarBukuFAQ extends StatefulWidget {
 
 class _DaftarBukuFAQState extends State<DaftarBukuFAQ> {
   bool value = false;
+  String judul = "";
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,31 @@ class _DaftarBukuFAQState extends State<DaftarBukuFAQ> {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                   colors: [Colors.blueAccent, Colors.blueGrey])),
-          child: FutureBuilder(
-              future: fetchBook(),
+          child: Column(children: [
+            SizedBox(height: 20,),
+            Center(child: Text("Klik buku yang ingin ditanyakan", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)),
+            SizedBox(height: 20,),
+            Center(child: TextField(
+                        onChanged: (value) {
+                          setState(() {
+                            judul = value;
+                          });
+                        },
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none),
+                            hintText:
+                                "Masukkan judul buku yang ingin dicari!",
+                            prefixIcon: Icon(Icons.search),
+                            prefixIconColor: Colors.blueAccent),
+              )),
+            SizedBox(height: 20,),
+            Expanded(child: FutureBuilder(
+              future: fetchBook(judul),
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.data == null) {
                   return const Center(child: CircularProgressIndicator());
@@ -126,7 +150,8 @@ class _DaftarBukuFAQState extends State<DaftarBukuFAQ> {
                             }));
                   }
                 }
-              }),
+              }),)
+          ],)
         ));
   }
 }

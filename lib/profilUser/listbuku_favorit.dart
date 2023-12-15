@@ -10,6 +10,7 @@ class DaftarBukuFavorit extends StatefulWidget {
 
 class _DaftarBukuState extends State<DaftarBukuFavorit> {
   bool value = false;
+  String judul = "";
 
   void _showFavoritSnackBar(BuildContext context, Fields book) {
     final snackBar = SnackBar(
@@ -34,7 +35,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
           ),
         ),
         child: FutureBuilder(
-          future: fetchBook(),
+          future: fetchBook(judul),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return const Center(child: CircularProgressIndicator());

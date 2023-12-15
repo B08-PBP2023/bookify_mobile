@@ -34,7 +34,7 @@ class _FAQBukuState extends State<FAQBuku > {
 
           actions: [
           IconButton(
-            icon: Icon(Icons.exit_to_app, color: Colors.black),
+            icon: Icon(Icons.question_answer, color: Colors.black),
             onPressed: () {
               if (userLogin == "adminreal") {
                 Navigator.of(context).push(
@@ -131,7 +131,7 @@ class _FAQBukuState extends State<FAQBuku > {
                                 if (response['status'] == 'success') {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(const SnackBar(
-                                    content: Text("Produk baru berhasil disimpan!"),
+                                    content: Text("Pertanyaan berhasil dihapus!"),
                                     ));
                                     Navigator.pushReplacement(
                                         context,
