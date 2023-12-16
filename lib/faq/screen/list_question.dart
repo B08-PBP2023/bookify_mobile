@@ -140,7 +140,7 @@ class _QuestionBukuState extends State<QuestionBuku > {
                                 if (response['status'] == 'success') {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(const SnackBar(
-                                    content: Text("Produk baru berhasil disimpan!"),
+                                    content: Text("Pertanyaan berhasil dihapus!"),
                                     ));
                                     Navigator.pushReplacement(
                                         context,

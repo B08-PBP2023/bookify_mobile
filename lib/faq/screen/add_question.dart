@@ -89,7 +89,7 @@ class _QuestionFormPageState extends State<QuestionFormPage> {
                               if (response['status'] == 'success') {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
-                                  content: Text("Produk baru berhasil disimpan!"),
+                                  content: Text("Pertanyaan baru berhasil disimpan!"),
                                   ));
                                   Navigator.pushReplacement(
                                       context,
