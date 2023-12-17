@@ -1,16 +1,24 @@
 import 'package:bookify_mobile/ulasanBuku/models/models_ulasan.dart';
-import 'package:flutter/material.dart'; // Pastikan mengimpor model BookReview
+import 'package:flutter/material.dart';
 
-class UlasanPage extends StatelessWidget {
+class UlasanPage extends StatefulWidget {
   final BookReview ulasan; // Terima data ulasan sebagai parameter
 
   UlasanPage({required this.ulasan});
 
   @override
+  _UlasanPageState createState() => _UlasanPageState();
+}
+
+class _UlasanPageState extends State<UlasanPage> {
+  TextEditingController inputController = TextEditingController();
+  String hasilUlasan = ""; // Variabel untuk menyimpan hasil ulasan
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ulasan Buku"), // Ganti judul sesuai kebutuhan
+        title: Text("Ulasan Buku"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,32 +26,75 @@ class UlasanPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Penulis: ${ulasan.nama}",
+              "Penulis: ${widget.ulasan.nama}",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              "Tanggal Ulasan: ${ulasan.tanggalReview}",
+              "Tanggal Ulasan: ${widget.ulasan.tanggalReview}",
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 8),
             Text(
-              "Rating: ${ulasan.rating}",
+              "Rating: ${widget.ulasan.rating}",
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             Text(
-              "Ulasan:",
+              "Masukkan Ulasan Anda:",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            TextFormField(
+              controller: inputController,
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: "Tulis ulasan Anda di sini",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Menggunakan nilai yang dimasukkan oleh pengguna
+                String ulasanPengguna = inputController.text;
+                
+                // Lakukan sesuatu dengan ulasanPengguna, misalnya simpan ke database atau tampilkan
+                // Anda dapat menggantinya dengan tindakan yang sesuai dengan kebutuhan aplikasi Anda.
+
+                // Menampilkan hasil ulasan menggunakan SnackBar
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Ulasan Anda: $ulasanPengguna"),
+                  ),
+                );
+
+                // Mengupdate hasil ulasan
+                setState(() {
+                  hasilUlasan = ulasanPengguna;
+                });
+              },
+              child: Text("Kirim Ulasan"),
+            ),
+            SizedBox(height: 16),
+            Text(
+              "Hasil Ulasan:",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              ulasan.reviewText,
+              hasilUlasan, // Menampilkan hasil ulasan di sini
               style: TextStyle(fontSize: 16),
             ),
           ],
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    inputController.dispose();
+    super.dispose();
   }
 }

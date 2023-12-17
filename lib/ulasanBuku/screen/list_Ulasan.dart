@@ -38,8 +38,8 @@ class _DaftarUlasanState extends State<DaftarUlasan> {
               return const Center(child: CircularProgressIndicator());
             } else {
               if (!snapshot.hasData) {
-                return Column(
-                  children: const [
+                return const Column(
+                  children: [
                     Text(
                       "Tidak ada buku :(",
                       style: TextStyle(color: Color(0xff59A5D8), fontSize: 20),
@@ -127,19 +127,18 @@ class _DaftarUlasanState extends State<DaftarUlasan> {
                               // Misalnya, navigasi ke halaman tambah ulasan
                               // Navigator.push(context, MaterialPageRoute(builder: (context) => TambahUlasanPage()));
                               // Navigasi ke halaman ulasan dengan mengirim objek BookReview
-                          BookReview ulasanBuku = BookReview(
-                            username: "user123",
-                            nama: "Nama Pengulas",
-                            tanggalReview: "12 Januari 2023",
-                            reviewText: "Ini adalah ulasan buku yang bagus.",
-                            rating: "5/5",
-                          );
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UlasanPage(ulasan: ulasanBuku), // Ganti bookReviewData dengan objek BookReview yang sesuai
-                            ),
-                          );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UlasanPage(ulasan: BookReview(
+                              username: "Nama Pengguna Default",
+                              nama: "Nama Penulis Default",
+                              tanggalReview: "Tanggal Review Default",
+                              reviewText: "Ulasan Default",
+                              rating: "Rating Default",
+                            )),
+                          ),
+                        );
                             },
                             child: Text("Tambah Ulasan"),
                           ),
