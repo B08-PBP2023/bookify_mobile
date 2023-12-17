@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
-=======
 import 'package:bookify_mobile/faq/screen/list_buku_faq.dart';
->>>>>>> e8b11f6bd645ec0cfd738b3aa2522b9105ba081b
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/screen/list_buku.dart';
 import 'package:bookify_mobile/homepage/homepage.dart';
@@ -89,21 +86,22 @@ Drawer buildDrawer(BuildContext context) {
                 ),
 
                 ListTile(
-<<<<<<< HEAD
-                  title: const Text('Ulasan', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.reviews, color: Colors.white),
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const DaftarUlasan()),
-=======
                   title: const Text('FAQ', style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.person, color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => DaftarBukuFAQ(username: LoginPage.uname)),
->>>>>>> e8b11f6bd645ec0cfd738b3aa2522b9105ba081b
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Ulasan', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.reviews, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DaftarUlasan()),
                     );
                   },
                 ),
