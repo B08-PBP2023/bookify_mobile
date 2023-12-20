@@ -11,6 +11,8 @@ import 'package:bookify_mobile/book_page/models/buku.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bookify_mobile/authentication/login.dart';
 
+//https://bookify-b08-tk.pbp.cs.ui.ac.id/
+
 
 class ProfilPage extends StatefulWidget {
   final String username;
@@ -33,7 +35,7 @@ class _ProfilPageState extends State<ProfilPage> {
 
   Future<UserProfile?> _loadProfileData(BuildContext context) async {
     final request = context.watch<CookieRequest>();
-    var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_profile_flutter/");
+    var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_profile_flutter/');
     
     var response = await request.get(
       url.toString(),      
@@ -69,7 +71,7 @@ class _ProfilPageState extends State<ProfilPage> {
 
   Future<List<FavoriteModel>> fetchFavoriteBooks() async {
     final request = context.watch<CookieRequest>();
-    var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_favorite_by_user_flutter/");
+    var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_favorite_by_user_flutter/');
     var response = await request.get(
       url.toString(),
     );
@@ -261,7 +263,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                                 context.read<CookieRequest>();
 
                                             var url = Uri.parse(
-                                              "https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/delete_favorite_flutter/${snapshot.data![index].idBook}/",
+                                              'https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/delete_favorite_flutter/${snapshot.data![index].idBook}/',
                                             );
 
                                             var response = await request.post(

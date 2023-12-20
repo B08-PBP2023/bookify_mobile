@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 
-
-
-
 class EditProfilPage extends StatefulWidget {
   final String initialTanggalLahir;
   final String initialDescription;
@@ -84,10 +81,24 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-           
+                    // print (request.cookies['csrftoken']!.name);
+                    // print (request.cookies['csrftoken']!.value);
+                    // print (request.cookies['sessionid']!.value);
                     try {
-                      var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/edit_profile_flutter/");
-       
+                      var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/edit_profile_flutter/');
+                      // var response = await http.post(
+                      //   url,
+                      //   headers: {
+                      //     // "Content-Type": "application/json",
+                      //     // "X-CSRFToken": request.cookies['csrftoken']!.name,
+                      //     // "Cookie":
+                      //     //     "csrftoken=${request.cookies['csrftoken']!.value};sessionid=${request.cookies['sessionid']!.value}",
+                      //   },
+                      //   body: jsonEncode(<String, dynamic>{
+                      //     "tanggal_lahir": tanggalLahirController.text,
+                      //     "description": descriptionController.text,
+                      //   }),
+                      // );
                       final response = await request.post(
                         url.toString(),
                         {
@@ -101,7 +112,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                         var result = response;
 
                         final snackBar = const SnackBar(
-                          content: Text("Data berhasil di update"),
+                          content: Text("Data berhasil diupdate"),
                           duration: Duration(seconds: 2),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
