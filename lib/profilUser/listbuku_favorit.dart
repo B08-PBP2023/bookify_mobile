@@ -1,13 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/utils/fetch_buku.dart';
-
 import 'package:bookify_mobile/book_page/models/buku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-
-
 
 
 class DaftarBukuFavorit extends StatefulWidget {
@@ -32,7 +27,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Colors.blueAccent, Colors.blueGrey],
+            colors: [Colors.blueAccent, const Color.fromARGB(255, 119, 143, 155)],
           ),
         ),
         child: FutureBuilder<List<Buku>>(

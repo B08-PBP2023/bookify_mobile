@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class EditProfilPage extends StatefulWidget {
   final String initialTanggalLahir;
@@ -36,7 +37,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profil'),
+        title: Text("Edit Profil"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -54,7 +55,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                   controller: tanggalLahirController,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    labelText: 'Tanggal Lahir',
+                    labelText: "Tanggal Lahir",
                     labelStyle: TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -62,13 +63,35 @@ class _EditProfilPageState extends State<EditProfilPage> {
                     filled: true,
                     fillColor: Colors.white,
                   ),
+     
+
+                  onTap: () async {
+                    print("tap");
+                    await initializeDateFormatting("id_ID", null);
+                    DateTime nowDate = DateTime.now();
+                    if (tanggalLahirController.text.isNotEmpty) {
+                      nowDate = DateFormat("dd/MM/yyyy", "id_ID").parse(tanggalLahirController.text);
+                    }
+                    final DateTime? picked = await showDatePicker(
+                      context: context,
+                      initialDate: nowDate,
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime(2100),
+                    );
+                    if (picked != null && picked != nowDate) {
+                      final formattedDate = DateFormat("dd/MM/yyyy", "id_ID").format(picked);
+                      setState(() {
+                        tanggalLahirController.text = formattedDate;
+                      });
+                    }
+                  }
                 ),
                 SizedBox(height: 16),
                 TextField(
                   controller: descriptionController,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    labelText: 'Deskripsi',
+                    labelText: "Deskripsi",
                     labelStyle: TextStyle(color: Colors.black),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -81,24 +104,10 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
-                    // print (request.cookies['csrftoken']!.name);
-                    // print (request.cookies['csrftoken']!.value);
-                    // print (request.cookies['sessionid']!.value);
+
                     try {
-                      var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/edit_profile_flutter/');
-                      // var response = await http.post(
-                      //   url,
-                      //   headers: {
-                      //     // "Content-Type": "application/json",
-                      //     // "X-CSRFToken": request.cookies['csrftoken']!.name,
-                      //     // "Cookie":
-                      //     //     "csrftoken=${request.cookies['csrftoken']!.value};sessionid=${request.cookies['sessionid']!.value}",
-                      //   },
-                      //   body: jsonEncode(<String, dynamic>{
-                      //     "tanggal_lahir": tanggalLahirController.text,
-                      //     "description": descriptionController.text,
-                      //   }),
-                      // );
+                      var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/edit_profile_flutter/");
+                 
                       final response = await request.post(
                         url.toString(),
                         {
@@ -127,7 +136,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                         Navigator.pop(context);
                       } else {
                         final snackBar = const SnackBar(
-                          content: Text("Failed to update data"),
+                          content: Text("Data gagal update"),
                           duration: Duration(seconds: 2),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -136,7 +145,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                       print("Error: $e");
                     }
                   },
-                  child: Text('Simpan'),
+                  child: Text("Simpan"),
                 ),
               ],
             ),
