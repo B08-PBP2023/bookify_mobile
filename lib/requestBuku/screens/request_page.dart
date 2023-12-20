@@ -152,19 +152,20 @@ void _saveBooks() async {
     setState(() {});
   }
 
-  void navigateToAddBookForm() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => RequestForm(
-          onSave: (BukuReq bookReq) {
-            setState(() {
-              books.add(bookReq);
-            });
-          },
-        ),
+void navigateToAddBookForm() {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => RequestForm(
+        onSave: (BukuReq bookReq) {
+          setState(() {
+            books.add(bookReq);
+          });
+          _saveBooks(); 
+        },
       ),
-    );
-  }
+    ),
+  );
+}
 
   void _deleteBook(BukuReq bookToDelete) {
   setState(() {
