@@ -41,23 +41,23 @@ class MyHomePage extends StatelessWidget {
                 ]),
             child: Column(
               children: [
-                // SizedBox(height: 30),
-                // Container(
-                //   decoration: BoxDecoration(
-                //       color: Colors.white,
-                //       borderRadius: BorderRadius.circular(35)),
-                //   child: Container(
-                //       padding: EdgeInsets.all(5),
-                //       // decoration: BoxDecoration(
-                //       // padding: const EdgeInsets.all(10),
-                //       child: ClipRRect(
-                //         borderRadius: BorderRadius.circular(30.0),
-                //         child: Image.network(
-                //           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1489732961i/1362193.jpg",
-                //           height: 240,
-                //         ),
-                //       )),
-                // ),
+                SizedBox(height: 30),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(35)),
+                  child: Container(
+                      padding: EdgeInsets.all(5),
+                      // decoration: BoxDecoration(
+                      // padding: const EdgeInsets.all(10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: Image.network(
+                          "https://i2-prod.walesonline.co.uk/incoming/article6890072.ece/ALTERNATES/s615b/hp1.jpg",
+                          height: 240,
+                        ),
+                      )),
+                ),
                 SizedBox(height: 10),
                 Column(
                   children: [
@@ -84,10 +84,10 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
                       child: Column(children: [
-                        Text(
-                          "Lihat Semua Buku",
-                        ),
-                        SizedBox(height: 10),
+                        // Text(
+                        //   "Lihat Semua Buku",
+                        // ),
+                        // SizedBox(height: 10),
                         TextButton(
                           onPressed: () {
                             Navigator.pushReplacement(
