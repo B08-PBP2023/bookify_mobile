@@ -87,7 +87,7 @@ Drawer buildDrawer(BuildContext context) {
 
                 ListTile(
                   title: const Text('FAQ', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.person, color: Colors.white),
+                  leading: const Icon(Icons.question_mark , color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
