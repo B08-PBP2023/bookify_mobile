@@ -1,15 +1,9 @@
-import 'dart:convert';
-
-//import 'package:bookify_mobile/onstants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/utils/fetch_buku.dart';
-import 'package:bookify_mobile/homepage/drawer.dart';
 import 'package:bookify_mobile/book_page/models/buku.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 
-import '../authentication/login.dart';
 
 class DaftarBukuFavorit extends StatefulWidget {
   @override
@@ -19,14 +13,6 @@ class DaftarBukuFavorit extends StatefulWidget {
 class _DaftarBukuState extends State<DaftarBukuFavorit> {
   bool value = false;
   String judul = "";
-
-  // void _showFavoritSnackBar(BuildContext context, Fields book) {
-  //   final snackBar = SnackBar(
-  //     content: Text('Buku ditambahkan ke Favorit!'),
-  //     duration: Duration(seconds: 2),
-  //   );
-  //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +27,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Colors.blueAccent, Colors.blueGrey],
+            colors: [Colors.blueAccent, const Color.fromARGB(255, 119, 143, 155)],
           ),
         ),
         child: FutureBuilder<List<Buku>>(
@@ -104,82 +90,81 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
                             Text(
                               "${snapshot.data![index].fields.languageCode}",
                               style: const TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
                             ),
                             const SizedBox(height: 5),
                             Text(
                               "${snapshot.data![index].fields.numPages}",
                               style: const TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
                             ),
                             const SizedBox(height: 5),
                             Text(
                               "${snapshot.data![index].fields.publicationDate}",
                               style: const TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
                             ),
                             const SizedBox(height: 5),
                             Text(
                               "${snapshot.data![index].fields.publisher}",
                               style: const TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                              ),
                             ),
                             const SizedBox(height: 5),
                             ElevatedButton(
                               onPressed: () async {
                                 try {
-                                  //menambahkan buku favorite ke API
-                                  //https://bookify-b08-tk.pbp.cs.ui.ac.id
-
-
-                                  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/add_favorit_flutter/${snapshot.data![index].pk}/');
-                                  var response = await http.post(
-                                    url,
-                                    headers: {
-                                      "Content-Type": "application/json; charset=UTF-8",
-                                      "X-CSRFToken": request.cookies['csrftoken']!.name,
-                                      "Cookie":
-                                      "csrftoken=${request.cookies['csrftoken']!.value};sessionid=${request.cookies['sessionid']!.value}",
-                                    },
+                                  var url = Uri.parse(
+                                      "https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/add_favorit_flutter/${snapshot.data![index].pk}/");
+                                  var response = await request.post(
+                                    url.toString(),
+                                    {}
                                   );
-                                  print("masuk");
 
-
-                                  if (response.statusCode == 200) {
-                                    var result = json.decode(response.body);
+                                  if (response['status'] == 'success') {
+                                    var result = response;
                                     final snackBar = SnackBar(
                                       content: Text(result['msg']),
                                       duration: Duration(seconds: 2),
                                     );
-                                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                    Navigator.pop(context,
-                                        snapshot.data![index].fields.toJson());
-                                  }else if(response.statusCode == 400){
-                                    var result = json.decode(response.body);
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+
+                                    // Return selected book data to the previous page
+                                    Navigator.pop(
+                                      context,
+                                      snapshot.data![index].fields.toJson(),
+                                    );
+                                  } else if (response['status'] == 'failed') {
+                                    var result = response;
 
                                     final snackBar = SnackBar(
                                       content: Text(result['msg']),
                                       duration: Duration(seconds: 2),
                                     );
-                                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                                  }else{
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                  } else {
                                     final snackBar = SnackBar(
                                       content: Text("Error"),
                                       duration: Duration(seconds: 2),
                                     );
-                                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
                                   }
                                 } catch (e) {
-                                  print("masuk eee");
-
                                   print(e.toString());
                                 }
                               },

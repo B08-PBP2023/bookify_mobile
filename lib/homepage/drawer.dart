@@ -1,5 +1,6 @@
-import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:bookify_mobile/faq/screen/list_buku_faq.dart';
+import 'package:bookify_mobile/requestBuku/screens/request_page.dart';
+import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/screen/list_buku.dart';
 import 'package:bookify_mobile/homepage/homepage.dart';
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:bookify_mobile/profilUser/profile_page.dart';
 import 'package:bookify_mobile/authentication/login.dart';
 import 'package:bookify_mobile/pinjamBuku/screen/borrow.dart';
-import 'package:bookify_mobile/pinjamBuku/screen/borrowed_book.dart';
+import 'package:bookify_mobile/wishlist/screen/list_buku_wishlist.dart';
 
 
 // merupakan sebuah Drawer yang digunakan untuk navigasi antar page
@@ -113,7 +114,7 @@ Drawer buildDrawer(BuildContext context) {
 
                 ListTile(
                   title: const Text('FAQ', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.person, color: Colors.white),
+                  leading: const Icon(Icons.question_mark , color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -132,6 +133,16 @@ Drawer buildDrawer(BuildContext context) {
                   },
                 ),
 
+                ListTile(
+                  title: const Text('wishlist buku', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.bookmark_add, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => DaftarBukuWishlist(username: LoginPage.uname)),
+                    );
+                  },
+                ),
               ],
             ),
           ), // <-- This is the closing parenthesis for Padding
