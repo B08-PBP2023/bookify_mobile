@@ -20,10 +20,11 @@ class _UlasanPageState extends State<UlasanPage> {
   TextEditingController inputController = TextEditingController();
   String hasilUlasan = "";
   String ratingTerpilih = '1';
-  String formatDate(DateTime date) {
-    final DateFormat formatter = DateFormat('dd MMMM yyyy');
+  String formatDateWithTime(DateTime date) {
+    final DateFormat formatter = DateFormat('dd MMMM yyyy, HH:mm');
     return formatter.format(date);
   }
+
 
   void kirimUlasanKeServer() async {
     // Ganti URL sesuai dengan endpoint API server Anda
@@ -81,7 +82,7 @@ class _UlasanPageState extends State<UlasanPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text("Rating: ${ulasan.fields.rating}"),
-            Text("Tanggal dibuat: ${formatDate(ulasan.fields.createdAt)}"),
+            Text("Tanggal dibuat: ${formatDateWithTime(ulasan.fields.createdAt)}"),
           ],
         ),
       ),
