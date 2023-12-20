@@ -124,8 +124,8 @@ Drawer buildDrawer(BuildContext context) {
                 ),
 
                 ListTile(
-                  title: const Text('wishlist buku', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.bookmark_add, color: Colors.white),
+                  title: const Text('Wishlist', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.bookmark_add , color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -133,6 +133,18 @@ Drawer buildDrawer(BuildContext context) {
                     );
                   },
                 ),
+
+                ListTile(
+                  title: const Text('Request Buku', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.add, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => RequestBookPage()),
+                    );
+                  },
+                ),
+
               ],
             ),
           ), // <-- This is the closing parenthesis for Padding
