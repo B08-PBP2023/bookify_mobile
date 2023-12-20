@@ -1,5 +1,6 @@
-// import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:bookify_mobile/faq/screen/list_buku_faq.dart';
+import 'package:bookify_mobile/requestBuku/screens/request_page.dart';
+import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/screen/list_buku.dart';
 import 'package:bookify_mobile/homepage/homepage.dart';
@@ -109,18 +110,17 @@ Drawer buildDrawer(BuildContext context) {
                     );
                   },
                 ),
-                // ListTile(
-                //   title: const Text('Ulasan', style: TextStyle(color: Colors.white)),
-                //   leading: const Icon(Icons.reviews, color: Colors.white),
-                //   onTap: () {
-                //     Navigator.pushReplacement(
-                //       context,
-                //       MaterialPageRoute(builder: (context) => const DaftarUlasan()),
-                //     );
-                //   },
-                // ),
+                ListTile(
+                  title: const Text('Ulasan', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.reviews, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DaftarUlasan()),
+                    );
+                  },
+                ),
 
-<<<<<<< HEAD
                 ListTile(
                   title: const Text('Request Buku', style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.bookmark_add, color: Colors.white),
@@ -131,8 +131,6 @@ Drawer buildDrawer(BuildContext context) {
                     );
                   },
                 ),
-=======
->>>>>>> 95bd72c97656b98d243ccd4619c4d31a178ed01e
               ],
             ),
           ), // <-- This is the closing parenthesis for Padding

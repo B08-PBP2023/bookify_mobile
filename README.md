@@ -26,7 +26,7 @@ Aplikasi yang kami ajukan berupa perpustakaan _online_ bernama Bookify. Bookify 
 
 ## Daftar Modul📝
 ### 1. **HomePage** (seluruh anggota)
-Pada halaman `homepage`, pengguna dapat melihat informasi mengenai website. Selain itu, halaman ini juga menampilkan modul yang dapat diakses, namun pengguna Guest tidak dapat mengakses semua fitur kecuali lihat buku
+Pada halaman `homepage`, pengguna dapat melihat informasi mengenai website. Selain itu, halaman ini juga menampilkan modul yang dapat diakses.
 - About website
 
 ### 2. **Profil user** (Aulia Rizqi)
