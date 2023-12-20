@@ -271,7 +271,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                             var result = response;
 
                                             final snackBar = SnackBar(
-                                              content: Text("Tambahkan Ke Favorit"),
+                                              content: Text(result['msg']),
                                               duration: Duration(seconds: 2),
                                             );
                                             ScaffoldMessenger.of(context)

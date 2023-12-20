@@ -27,7 +27,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Colors.blueAccent, const Color.fromARGB(255, 119, 143, 155)],
+            colors: [Colors.blueAccent, Colors.blueGrey],
           ),
         ),
         child: FutureBuilder<List<Buku>>(
@@ -136,7 +136,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
                                   if (response['status'] == 'success') {
                                     var result = response;
                                     final snackBar = SnackBar(
-                                      content: Text("Berhasil Menambahkan Buku Favorit"),
+                                      content: Text(result['msg']),
                                       duration: Duration(seconds: 2),
                                     );
                                     ScaffoldMessenger.of(context)
@@ -151,7 +151,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
                                     var result = response;
 
                                     final snackBar = SnackBar(
-                                      content: Text("Gagal Menambahkan Buku favorit"),
+                                      content: Text(result['msg']),
                                       duration: Duration(seconds: 2),
                                     );
                                     ScaffoldMessenger.of(context)
