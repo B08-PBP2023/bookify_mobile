@@ -136,7 +136,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
                                   if (response['status'] == 'success') {
                                     var result = response;
                                     final snackBar = SnackBar(
-                                      content: Text(result['msg']),
+                                      content: Text("Berhasil Menambahkan Buku Favorit"),
                                       duration: Duration(seconds: 2),
                                     );
                                     ScaffoldMessenger.of(context)
@@ -151,7 +151,7 @@ class _DaftarBukuState extends State<DaftarBukuFavorit> {
                                     var result = response;
 
                                     final snackBar = SnackBar(
-                                      content: Text(result['msg']),
+                                      content: Text("Gagal Menambahkan Buku favorit"),
                                       duration: Duration(seconds: 2),
                                     );
                                     ScaffoldMessenger.of(context)
