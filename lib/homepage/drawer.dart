@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:bookify_mobile/profilUser/profile_page.dart';
 import 'package:bookify_mobile/authentication/login.dart';
 import 'package:bookify_mobile/pinjamBuku/screen/borrow.dart';
+import 'package:bookify_mobile/pinjamBuku/screen/borrowed_book.dart';
 
 
 // merupakan sebuah Drawer yang digunakan untuk navigasi antar page
@@ -88,8 +89,19 @@ Drawer buildDrawer(BuildContext context) {
                 ),
 
                 ListTile(
-                  title: const Text('Pinjam Buku', style: TextStyle(color: Colors.white)),
+                  title: const Text('Buku Saya', style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.book, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => PinjamBuku(username: LoginPage.uname)),
+                    );
+                  },
+                ),
+
+                ListTile(
+                  title: const Text('Pinjam Buku', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.note, color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,

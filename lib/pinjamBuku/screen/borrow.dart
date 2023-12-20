@@ -21,6 +21,27 @@ class _PinjamBukuState extends State<PinjamBuku> {
   bool value = false;
   String judul = "";
 
+  List<Fields> borrowedBooks = [];
+
+  Future<List<Pinjam>> fetchBorrowedBooks() async {
+    final request = context.watch<CookieRequest>();
+    var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/pinjamBuku/show_borrow_books/');
+    var response = await request.get(
+      url.toString(),
+    );
+
+    List<Pinjam> buku_pinjaman = [];
+    if (response['status'] == 'success') {
+      var result = response;
+      for (var d in result["data"]) {
+        if (d != null) {
+          buku_pinjaman.add(Pinjam.fromJson(d));
+        }
+      }
+    }
+    return buku_pinjaman;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +77,25 @@ class _PinjamBukuState extends State<PinjamBuku> {
                             prefixIcon: Icon(Icons.search),
                             prefixIconColor: Colors.blueAccent),
               )),
+            ElevatedButton(
+                    onPressed: () async {
+                      final result = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BorrowedBooks (),
+                        ),
+                      );
+
+                      if (result != null) {
+                        setState(() {
+                          // favoriteBooks.add(Fields.fromJson(result));
+                        });
+                        // _showFavoritSnackBar(context);
+                      }
+                    },
+                    child: Text('Buku yang Dipinjam'),
+                  ),
+                  
             SizedBox(height: 20,),
             Expanded(child: FutureBuilder(
               future: fetchBook(judul),
@@ -144,15 +184,13 @@ class _PinjamBukuState extends State<PinjamBuku> {
                                   const SizedBox(height: 5),
                           ElevatedButton(
                             onPressed: () {
-                              // Tindakan yang akan diambil saat tombol ditekan
-                              // Misalnya, navigasi ke halaman tambah ulasan
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => TambahUlasanPage()));
-                              // Navigasi ke halaman ulasan dengan mengirim objek BookReview
-                          //Navigator.push(
-                                //context,
-                                //MaterialPageRoute(
-                                    //builder: (context) => MyBookScreen(idBuku: snapshot.data![index].pk,)),
-                              //);
+                               
+
+                               ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Buku berhasil dipinjam!'),
+                                ),
+                              );
                             },
                             child: Text("Pinjam Buku Ini"),
                           ),               
@@ -177,13 +215,3 @@ class _PinjamBukuState extends State<PinjamBuku> {
         ));
   }
 }
-
-
-
-
-
-
-
-
-
-
