@@ -1,34 +1,32 @@
 // To parse this JSON data, do
 //
-//     final buku = bukuFromJson(jsonString);
+//     final pinjam = pinjamFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Buku> bukuFromJson(String str) => List<Buku>.from(json.decode(str).map((x) => Buku.fromJson(x)));
+List<Pinjam> pinjamFromJson(String str) => List<Pinjam>.from(json.decode(str).map((x) => Pinjam.fromJson(x)));
 
-String bukuToJson(List<Buku> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String pinjamToJson(List<Pinjam> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Buku {
-    Model model;
+class Pinjam {
+    String model;
     int pk;
     Fields fields;
 
-    Buku({
+    Pinjam({
         required this.model,
         required this.pk,
         required this.fields,
     });
 
-    factory Buku.fromJson(Map<String, dynamic> json) => Buku(
-        model: modelValues.map[json["model"]]!,
+    factory Pinjam.fromJson(Map<String, dynamic> json) => Pinjam(
+        model: json["model"],
         pk: json["pk"],
         fields: Fields.fromJson(json["fields"]),
     );
 
-  get title => null;
-
     Map<String, dynamic> toJson() => {
-        "model": modelValues.reverse[model],
+        "model": model,
         "pk": pk,
         "fields": fields.toJson(),
     };
@@ -36,37 +34,45 @@ class Buku {
 
 class Fields {
     String title;
+    int idBook;
     String authors;
-    LanguageCode languageCode;
+    String languageCode;
     int numPages;
     String publicationDate;
     String publisher;
+    int user;
 
     Fields({
         required this.title,
+        required this.idBook,
         required this.authors,
         required this.languageCode,
         required this.numPages,
         required this.publicationDate,
         required this.publisher,
+        required this.user,
     });
 
     factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         title: json["title"],
+        idBook: json["id_book"],
         authors: json["authors"],
-        languageCode: languageCodeValues.map[json["language_code"]]!,
+        languageCode: json["language_code"],
         numPages: json["num_pages"],
         publicationDate: json["publication_date"],
         publisher: json["publisher"],
+        user: json["user"],
     );
 
     Map<String, dynamic> toJson() => {
         "title": title,
+        "id_book": idBook,
         "authors": authors,
-        "language_code": languageCodeValues.reverse[languageCode],
+        "language_code": languageCode,
         "num_pages": numPages,
         "publication_date": publicationDate,
         "publisher": publisher,
+        "user": user,
     };
 }
 

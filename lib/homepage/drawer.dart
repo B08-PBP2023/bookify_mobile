@@ -1,5 +1,6 @@
-import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:bookify_mobile/faq/screen/list_buku_faq.dart';
+import 'package:bookify_mobile/requestBuku/screens/request_page.dart';
+import 'package:bookify_mobile/ulasanBuku/screen/list_Ulasan.dart';
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/screen/list_buku.dart';
 import 'package:bookify_mobile/homepage/homepage.dart';
@@ -7,6 +8,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:bookify_mobile/profilUser/profile_page.dart';
 import 'package:bookify_mobile/authentication/login.dart';
+import 'package:bookify_mobile/pinjamBuku/screen/borrow.dart';
+
 
 // merupakan sebuah Drawer yang digunakan untuk navigasi antar page
 Drawer buildDrawer(BuildContext context) {
@@ -86,8 +89,20 @@ Drawer buildDrawer(BuildContext context) {
                 ),
 
                 ListTile(
+                  title: const Text('Pinjam Buku', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.book, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => PinjamBuku(username: LoginPage.uname)),
+                    );
+                  },
+                ),
+     
+
+                ListTile(
                   title: const Text('FAQ', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.person, color: Colors.white),
+                  leading: const Icon(Icons.question_mark , color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
@@ -106,6 +121,16 @@ Drawer buildDrawer(BuildContext context) {
                   },
                 ),
 
+                ListTile(
+                  title: const Text('Request Buku', style: TextStyle(color: Colors.white)),
+                  leading: const Icon(Icons.bookmark_add, color: Colors.white),
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => RequestBookPage()),
+                    );
+                  },
+                ),
               ],
             ),
           ), // <-- This is the closing parenthesis for Padding

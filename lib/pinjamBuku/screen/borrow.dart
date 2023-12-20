@@ -1,17 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:bookify_mobile/book_page/utils/fetch_buku.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:bookify_mobile/book_page/utils/fetch_buku.dart';
 import 'package:bookify_mobile/homepage/drawer.dart';
-import 'package:bookify_mobile/ulasanBuku/models/models_ulasan.dart';
-import 'package:bookify_mobile/ulasanBuku/screen/ulasan_page.dart';
+import 'package:bookify_mobile/pinjamBuku/models/pinjam.dart';
+import 'package:bookify_mobile/pinjamBuku/screen/borrowed_book.dart';
 
-class DaftarUlasan extends StatefulWidget {
-  const DaftarUlasan({super.key});
+class PinjamBuku extends StatefulWidget {
+  const PinjamBuku({super.key,required this.username});
+  final String username;
 
   @override
-  State<DaftarUlasan> createState() => _DaftarUlasanState();
+  State<PinjamBuku> createState() => _PinjamBukuState();
 }
 
-class _DaftarUlasanState extends State<DaftarUlasan> {
+class _PinjamBukuState extends State<PinjamBuku> {
   bool value = false;
   String judul = "";
 
@@ -142,13 +148,13 @@ class _DaftarUlasanState extends State<DaftarUlasan> {
                               // Misalnya, navigasi ke halaman tambah ulasan
                               // Navigator.push(context, MaterialPageRoute(builder: (context) => TambahUlasanPage()));
                               // Navigasi ke halaman ulasan dengan mengirim objek BookReview
-                          Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => UlasanPage(idBuku: snapshot.data![index].pk,)),
-                              );
+                          //Navigator.push(
+                                //context,
+                                //MaterialPageRoute(
+                                    //builder: (context) => MyBookScreen(idBuku: snapshot.data![index].pk,)),
+                              //);
                             },
-                            child: Text("Tambah Ulasan"),
+                            child: Text("Pinjam Buku Ini"),
                           ),               
                                   
                                 ],
@@ -171,4 +177,13 @@ class _DaftarUlasanState extends State<DaftarUlasan> {
         ));
   }
 }
+
+
+
+
+
+
+
+
+
 

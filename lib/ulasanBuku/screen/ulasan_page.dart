@@ -25,7 +25,6 @@ class _UlasanPageState extends State<UlasanPage> {
     return formatter.format(date);
   }
 
-
   void kirimUlasanKeServer() async {
     // Ganti URL sesuai dengan endpoint API server Anda
     final url =
