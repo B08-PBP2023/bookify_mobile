@@ -1,4 +1,3 @@
-
 import 'package:bookify_mobile/profilUser/models/favorit_model.dart';
 import 'package:bookify_mobile/profilUser/models/user_profile.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,6 @@ import 'listbuku_favorit.dart';
 import 'package:bookify_mobile/book_page/models/buku.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bookify_mobile/authentication/login.dart';
-
-//https://bookify-b08-tk.pbp.cs.ui.ac.id/
 
 
 class ProfilPage extends StatefulWidget {
@@ -35,7 +32,7 @@ class _ProfilPageState extends State<ProfilPage> {
 
   Future<UserProfile?> _loadProfileData(BuildContext context) async {
     final request = context.watch<CookieRequest>();
-    var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_profile_flutter/');
+    var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_profile_flutter/");
     
     var response = await request.get(
       url.toString(),      
@@ -71,7 +68,7 @@ class _ProfilPageState extends State<ProfilPage> {
 
   Future<List<FavoriteModel>> fetchFavoriteBooks() async {
     final request = context.watch<CookieRequest>();
-    var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_favorite_by_user_flutter/');
+    var url = Uri.parse("https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/get_favorite_by_user_flutter/");
     var response = await request.get(
       url.toString(),
     );
@@ -92,7 +89,7 @@ class _ProfilPageState extends State<ProfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profil'),
+        title: Text("Profil User"),
       ),
       drawer: buildDrawer(context),
       body: Center(
@@ -132,7 +129,7 @@ class _ProfilPageState extends State<ProfilPage> {
                           columns: [
                             DataColumn(
                               label: Text(
-                                'Attribute',
+                                'Data User',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -141,7 +138,7 @@ class _ProfilPageState extends State<ProfilPage> {
                             ),
                             DataColumn(
                               label: Text(
-                                'Value',
+                                'Keterangan',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
@@ -151,19 +148,19 @@ class _ProfilPageState extends State<ProfilPage> {
                           ],
                           rows: [
                             DataRow(cells: [
-                              DataCell(Text('Nama')),
+                              DataCell(Text("Username")),
                               DataCell(Text(userProfile!.username)),
                             ]),
                             DataRow(cells: [
-                              DataCell(Text('Role')),
+                              DataCell(Text("Role")),
                               DataCell(Text(userProfile.role)),
                             ]),
                             DataRow(cells: [
-                              DataCell(Text('Tanggal Lahir')),
+                              DataCell(Text("Tanggal Lahir")),
                               DataCell(Text(userProfile.tanggalLahir)),
                             ]),
                             DataRow(cells: [
-                              DataCell(Text('Deskripsi')),
+                              DataCell(Text("Deskripsi")),
                               DataCell(Text(userProfile.description)),
                             ]),
                           ],
@@ -192,7 +189,7 @@ class _ProfilPageState extends State<ProfilPage> {
                         ),
                       );
                     },
-                    child: Text('Edit Profil'),
+                    child: Text("Edit Profil"),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
@@ -206,9 +203,9 @@ class _ProfilPageState extends State<ProfilPage> {
 
                       if (result != null) {
                         setState(() {
-                          // favoriteBooks.add(Fields.fromJson(result));
+                         
                         });
-                        // _showFavoritSnackBar(context);
+                        
                       }
                     },
                     child: Text('Buku Favorit'),
@@ -263,7 +260,7 @@ class _ProfilPageState extends State<ProfilPage> {
                                                 context.read<CookieRequest>();
 
                                             var url = Uri.parse(
-                                              'https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/delete_favorite_flutter/${snapshot.data![index].idBook}/',
+                                              "https://bookify-b08-tk.pbp.cs.ui.ac.id/profilUser/delete_favorite_flutter/${snapshot.data![index].idBook}/",
                                             );
 
                                             var response = await request.post(
