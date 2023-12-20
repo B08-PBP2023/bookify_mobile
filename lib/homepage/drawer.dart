@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:bookify_mobile/profilUser/profile_page.dart';
 import 'package:bookify_mobile/authentication/login.dart';
 import 'package:bookify_mobile/pinjamBuku/screen/borrow.dart';
+import 'package:bookify_mobile/wishlist/screen/list_buku_wishlist.dart';
 
 
 // merupakan sebuah Drawer yang digunakan untuk navigasi antar page
@@ -122,12 +123,12 @@ Drawer buildDrawer(BuildContext context) {
                 ),
 
                 ListTile(
-                  title: const Text('Request Buku', style: TextStyle(color: Colors.white)),
+                  title: const Text('wishlist buku', style: TextStyle(color: Colors.white)),
                   leading: const Icon(Icons.bookmark_add, color: Colors.white),
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => RequestBookPage()),
+                      MaterialPageRoute(builder: (context) => DaftarBukuWishlist(username: LoginPage.uname)),
                     );
                   },
                 ),
