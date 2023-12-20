@@ -89,16 +89,6 @@ Drawer buildDrawer(BuildContext context) {
                   },
                 ),
 
-                ListTile(
-                  title: const Text('Buku Saya', style: TextStyle(color: Colors.white)),
-                  leading: const Icon(Icons.book, color: Colors.white),
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => PinjamBuku(username: LoginPage.uname)),
-                    );
-                  },
-                ),
 
                 ListTile(
                   title: const Text('Pinjam Buku', style: TextStyle(color: Colors.white)),
