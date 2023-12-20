@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:bookify_mobile/ulasanBuku/models/models_ulasan.dart';
 
-Future<List<Review>> fetchReview(int idBuku) async {
+Future<List<Review>> fetchUlasan(int idBuku) async {
   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
   
   var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/ulasanBuku/get_ulasan_filtered_json/$idBuku/');
