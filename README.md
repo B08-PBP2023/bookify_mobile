@@ -67,7 +67,11 @@ Pemanggilan fungsi dilakukan di widget terkait untuk diolah sesuai dengan kebutu
 ## Berita Acara
 https://docs.google.com/spreadsheets/d/1lJv1dRvzTASb-BjoKw-3O13HaaSMznwwoi2R_66eM7g/edit?usp=drivesdk
 
+## Link Install APK
+https://install.appcenter.ms/orgs/b08-pbp/apps/bookify-mobile/distribution_groups/public
+
 [![Build status](https://build.appcenter.ms/v0.1/apps/c6769442-19b5-4cf2-a462-ce2dad52042a/branches/main/badge)](https://appcenter.ms)
+
 
 
 
