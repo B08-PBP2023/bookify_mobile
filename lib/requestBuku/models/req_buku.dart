@@ -41,5 +41,5 @@ class BukuReq {
     required this.numPages,
     required this.publicationDate,
     required this.penerbit,
-  }) : id = id ?? Random().nextInt(999999).toString(); 
+  }) : id = id ?? Random().nextInt(999999).toString(); // Menggunakan ID yang ada jika disediakan
 }
