@@ -7,7 +7,7 @@ import 'package:bookify_mobile/pinjamBuku/models/pinjam.dart';
 Future<List<Pinjam>> fetchBorrowedBooks(int idBuku) async {
   // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
   
-  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/PinjamBuku/get_pinjam_filtered_json/$idBuku/');
+  var url = Uri.parse('https://bookify-b08-tk.pbp.cs.ui.ac.id/pinjamBuku/show_borrow_books/');
   
 
   var response = await http.get(

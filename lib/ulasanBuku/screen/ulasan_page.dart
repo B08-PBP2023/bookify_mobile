@@ -20,8 +20,8 @@ class _UlasanPageState extends State<UlasanPage> {
   TextEditingController inputController = TextEditingController();
   String hasilUlasan = "";
   String ratingTerpilih = '1';
-  String formatDateWithTime(DateTime date) {
-    final DateFormat formatter = DateFormat('dd MMMM yyyy, HH:mm');
+  String formatDate(DateTime date) {
+    final DateFormat formatter = DateFormat('dd MMMM yyyy');
     return formatter.format(date);
   }
 
@@ -81,7 +81,7 @@ class _UlasanPageState extends State<UlasanPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text("Rating: ${ulasan.fields.rating}"),
-            Text("Tanggal dibuat: ${formatDateWithTime(ulasan.fields.createdAt)}"),
+            Text("Tanggal dibuat: ${formatDate(ulasan.fields.createdAt)}"),
           ],
         ),
       ),
