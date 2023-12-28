@@ -64,6 +64,7 @@ fetch.dart dilengkapi dengan suatu fungsi yang dapat dipanggil dari luar file ke
 Fungsi di dalam fetch.dart mengandung url yang digunakan sebagai endpoint JSON
 Pemanggilan fungsi dilakukan di widget terkait untuk diolah sesuai dengan kebutuhan
 
+
 ## Berita Acara
 https://docs.google.com/spreadsheets/d/1lJv1dRvzTASb-BjoKw-3O13HaaSMznwwoi2R_66eM7g/edit?usp=drivesdk
 
